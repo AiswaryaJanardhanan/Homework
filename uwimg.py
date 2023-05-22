@@ -182,7 +182,6 @@ convolve_image = lib.convolve_image
 convolve_image.argtypes = [IMAGE, IMAGE, c_int]
 convolve_image.restype = IMAGE
 
-
 ##### HOMEWORK 3
 
 harris_corner_detector = lib.harris_corner_detector
@@ -216,7 +215,6 @@ panorama_image_lib.restype = IMAGE
 def panorama_image(a, b, sigma=2, thresh=5, nms=3, inlier_thresh=2, iters=10000, cutoff=30, draw=0):
     return panorama_image_lib(a, b, sigma, thresh, nms, inlier_thresh, iters, cutoff, draw)
 
-
 ##### HOMEWORK 4
 
 train_model = lib.train_model
@@ -245,6 +243,23 @@ def make_model(layers):
     m.layers = (LAYER*m.n) (*layers)
     return m
 
+##### HOMEWORK 6
+
+draw_flow = lib.draw_flow
+draw_flow.argtypes = [IMAGE, IMAGE, c_float]
+draw_flow.restype = None
+
+box_filter_image = lib.box_filter_image
+box_filter_image.argtypes = [IMAGE, c_int]
+box_filter_image.restype = IMAGE
+
+optical_flow_images = lib.optical_flow_images
+optical_flow_images.argtypes = [IMAGE, IMAGE, c_int, c_int]
+optical_flow_images.restype = IMAGE
+
+optical_flow_webcam = lib.optical_flow_webcam
+optical_flow_webcam.argtypes = [c_int, c_int, c_int]
+optical_flow_webcam.restype = None
 
 if __name__ == "__main__":
     im = load_image("data/dog.jpg")
